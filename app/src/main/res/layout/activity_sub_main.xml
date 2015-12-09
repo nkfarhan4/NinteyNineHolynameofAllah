@@ -1,0 +1,131 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primaryColor"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <include layout="@layout/app_bar"/>
+
+
+    <LinearLayout
+       android:layout_margin="16dp"
+       android:background="@drawable/square_background"
+       android:gravity="center"
+       android:layout_gravity="center"
+       android:padding="16dp"
+       android:orientation="vertical"
+       android:layout_width="match_parent"
+        android:layout_weight="1"
+       android:layout_height="0dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:background="@drawable/square_backgroundimage"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/mainImg"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+                </LinearLayout>
+      <TextView
+          android:layout_marginTop="10dp"
+          android:id="@+id/heading"
+          android:textStyle="bold"
+          android:textSize="20sp"
+          android:gravity="center"
+          android:text="sub activity"
+          android:textColor="#E64A19"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/subheading"
+            android:textStyle="italic"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="sub activity"
+            android:textColor="#000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/desc"
+            android:textStyle="normal"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="sub activity"
+            android:textColor="#000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        </ScrollView>
+
+
+       </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/square_background"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:padding="16dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/left"
+            android:background="@drawable/left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+      <ImageView
+          android:id="@+id/playAudio"
+          android:layout_marginLeft="20dp"
+          android:layout_marginRight="20dp"
+          android:background="@drawable/audio_play"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/right"
+            android:background="@drawable/right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:background="@color/primaryColor"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/ad"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            ads:adSize="BANNER"
+
+            ads:adUnitId="ca-app-pb-6733180445570119/9604955587" />
+    </RelativeLayout>
+
+</LinearLayout>
