@@ -183,8 +183,8 @@ public class SubActivity extends ActionBarActivity {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
 
-                dialog= ProgressDialog.show(SubActivity.this,obj.NamesSub.get(POS),"Playing audio",true);
-                dialog.setCancelable(true);
+               //dialog= ProgressDialog.show(SubActivity.this,obj.NamesSub.get(POS),"Playing audio",true);
+                //dialog.setCancelable(true);
 
                 String fname=obj.Audio.get(POS);
                 int resID=getResources().getIdentifier(fname, "raw", getPackageName());
@@ -192,18 +192,19 @@ public class SubActivity extends ActionBarActivity {
 
                 mediaPlayer.start();
 
-
+/*
                 dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                     @Override
                     public void onDismiss(DialogInterface dialogInterface) {
                         mediaPlayer.stop();
                     }
                 });
+                */
 
                 mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                     @Override
                     public void onPrepared(MediaPlayer mediaPlayer) {
-                        dialog.show();
+                       //dialog.show();
                     }
                 });
 
@@ -211,7 +212,7 @@ public class SubActivity extends ActionBarActivity {
                     @Override
                     public void onCompletion(MediaPlayer mediaPlayer) {
                         mediaPlayer.stop();
-                        dialog.dismiss();
+                 //       dialog.dismiss();
                     }
                 });
 
@@ -234,7 +235,7 @@ public class SubActivity extends ActionBarActivity {
 
            if(mediaPlayer.isPlaying()) {
                mediaPlayer.stop();
-               dialog.dismiss();
+             //  dialog.dismiss();
            }
 
             interstitial.show();
