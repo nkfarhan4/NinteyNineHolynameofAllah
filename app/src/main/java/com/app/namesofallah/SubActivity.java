@@ -205,6 +205,7 @@ public class SubActivity extends ActionBarActivity {
                     @Override
                     public void onPrepared(MediaPlayer mediaPlayer) {
                        //dialog.show();
+                        playAudio.setImageResource(R.drawable.stop);
                     }
                 });
 
@@ -212,6 +213,7 @@ public class SubActivity extends ActionBarActivity {
                     @Override
                     public void onCompletion(MediaPlayer mediaPlayer) {
                         mediaPlayer.stop();
+                        playAudio.setImageResource(R.drawable.audio_play);
                  //       dialog.dismiss();
                     }
                 });
