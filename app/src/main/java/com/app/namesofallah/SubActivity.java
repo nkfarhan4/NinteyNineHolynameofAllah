@@ -58,6 +58,7 @@ public class SubActivity extends ActionBarActivity {
     int counterRight=0;
     int maincounter=0;
     MediaPlayer mediaPlayer;
+    boolean isPlaying = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -186,11 +187,16 @@ public class SubActivity extends ActionBarActivity {
                //dialog= ProgressDialog.show(SubActivity.this,obj.NamesSub.get(POS),"Playing audio",true);
                 //dialog.setCancelable(true);
 
-                String fname=obj.Audio.get(POS);
-                int resID=getResources().getIdentifier(fname, "raw", getPackageName());
-                mediaPlayer=MediaPlayer.create(SubActivity.this,resID);
+                if(isPlaying){
+                    isPlaying = false;
+                    mediaPlayer.stop();
+                    changImage();
+                }else {
+                    String fname = obj.Audio.get(POS);
+                    int resID = getResources().getIdentifier(fname, "raw", getPackageName());
+                    mediaPlayer = MediaPlayer.create(SubActivity.this, resID);
 
-                mediaPlayer.start();
+                    mediaPlayer.start();
 
 /*
                 dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
@@ -201,26 +207,38 @@ public class SubActivity extends ActionBarActivity {
                 });
                 */
 
-                mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                    @Override
-                    public void onPrepared(MediaPlayer mediaPlayer) {
-                       //dialog.show();
-                        playAudio.setImageResource(R.drawable.stop);
-                    }
-                });
+                    mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                        @Override
+                        public void onPrepared(MediaPlayer mediaPlayer) {
+                            //dialog.show();
+                            isPlaying = true;
+                            changImage();
+                        }
+                    });
 
-                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mediaPlayer) {
-                        mediaPlayer.stop();
-                        playAudio.setImageResource(R.drawable.audio_play);
-                 //       dialog.dismiss();
-                    }
-                });
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+                            mediaPlayer.stop();
+                            isPlaying = false;
+                            changImage();
+
+                            //       dialog.dismiss();
+                        }
+                    });
+                }
 
                 return false;
             }
         });
+
+
+    }
+
+    private void changImage(){
+      if(isPlaying)
+          playAudio.setImageResource(R.drawable.stop);
+        else  playAudio.setImageResource(R.drawable.audio_play);
     }
 
 
