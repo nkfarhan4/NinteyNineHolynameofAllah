@@ -113,7 +113,11 @@ public class SubActivity extends ActionBarActivity {
         left.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-
+                if(isPlaying){
+                    isPlaying = false;
+                    mediaPlayer.stop();
+                    changImage();
+                }
                 maincounter +=1;
 
                 if(maincounter==15){
@@ -147,6 +151,12 @@ public class SubActivity extends ActionBarActivity {
         right.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                if(isPlaying){
+                    isPlaying = false;
+                    mediaPlayer.stop();
+                    changImage();
+                }
 
                 maincounter+=1;
 
